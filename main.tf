@@ -14,7 +14,7 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "example" {
-  bucket = "S3_bucket_Terraform_23"
+  bucket = "s3-bucket-terraform-23"
 
 }
 
