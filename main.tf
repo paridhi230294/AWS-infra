@@ -19,6 +19,7 @@ resource "aws_s3_bucket" "example" {
 }
 
 
+
 resource "aws_instance" "Paridhi_Server" {
   ami           = "ami-09e143e99e8fa74f9"
   instance_type = "t2.micro"
