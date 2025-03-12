@@ -44,37 +44,37 @@ resource "aws_autoscaling_group" "bar" {
 
 
 
-resource "aws_lb" "test" {
-  name               = "test-lb-tf"
-  internal           = false
-  load_balancer_type = "application"
-  security_groups    = [aws_security_group.lb_sg.id]
-  subnets            = [for subnet in aws_subnet.public : subnet.id]
+# resource "aws_lb" "test" {
+#   name               = "test-lb-tf"
+#   internal           = false
+#   load_balancer_type = "application"
+#   security_groups    = [aws_security_group.lb_sg.id]
+#   subnets            = [for subnet in aws_subnet.public : subnet.id]
 
-  enable_deletion_protection = true
+#   enable_deletion_protection = true
 
-  access_logs {
-    bucket  = aws_s3_bucket.example.id
-    prefix  = "test-lb"
-    enabled = true
-  }
+#   access_logs {
+#     bucket  = aws_s3_bucket.example.id
+#     prefix  = "test-lb"
+#     enabled = true
+#   }
 
-  tags = {
-    Environment = "production"
-  }
-}
-
-# resource "aws_db_instance" "Paridhi_rds" {
-#   allocated_storage    = 10
-#   db_name              = "mydb"
-#   engine               = "mysql"
-#   engine_version       = "8.0"
-#   instance_class       = "db.t3.micro"
-#   username             = "foo"
-#   password             = "foobarbaz"
-#   parameter_group_name = "default.mysql8.0"
-#   skip_final_snapshot  = true
+#   tags = {
+#     Environment = "production"
+#   }
 # }
+
+resource "aws_db_instance" "Paridhi_rds" {
+  allocated_storage    = 10
+  db_name              = "mydb"
+  engine               = "mysql"
+  engine_version       = "8.0"
+  instance_class       = "db.t3.micro"
+  username             = "foo"
+  password             = "foobarbaz"
+  parameter_group_name = "default.mysql8.0"
+  skip_final_snapshot  = true
+}
 
 
 resource "aws_vpc" "main" {
